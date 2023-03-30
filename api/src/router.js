@@ -17,9 +17,8 @@ router.put('/employee/:id', (req, res) => {
   res.status(200).send('router funcionando');
 });
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR DELETAR UM EMPREGADO
-router.delete('/employee/:id', (req, res) => {
-  res.status(200).send('router funcionando');
-});
+router.delete('/employee/:id', userController.deleteUserById);
+
 
 
 module.exports = router;

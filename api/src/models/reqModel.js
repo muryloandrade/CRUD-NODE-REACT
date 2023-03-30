@@ -9,7 +9,13 @@ const getById = async (id) => {
   return funcionario;
 };
 
+const deleteById = async (id) => {
+  const funcionario = await axios.delete(`http://localhost:2899/users/${id}`);
+  return funcionario;
+};
+
 module.exports = {
   getAll,
   getById,
+  deleteById,
 };
