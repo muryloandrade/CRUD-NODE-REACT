@@ -1,5 +1,6 @@
 const axios = require('axios');
 const uuid = require('uuid');
+
 const getAll = async () => {
   const funcionarios = await axios.get('http://localhost:2899/users');
   return funcionarios;
