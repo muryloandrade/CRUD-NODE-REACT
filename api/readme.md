@@ -86,6 +86,6 @@ Para realizar uma requisição, utilize o seguinte exemplo:
 "email": "murylo@exemplo.com",
 "phone": "(11) 1111-1111",
 "birth_date": "1990-01-01",
-"salary": 5000,
+"salary": 5000
 }
 ```
