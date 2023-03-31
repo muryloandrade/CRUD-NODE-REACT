@@ -12,9 +12,7 @@ router.get('/employee/:id', userController.getUserById);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR CRIAR UM EMPREGADO
 router.post('/employee', userController.createUser);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR ATUALIZAR UM EMPREGADO
-router.put('/employee/:id', (req, res) => {
-  res.status(200).send('router funcionando');
-});
+router.put('/employee/:id', userController.updateUser);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR DELETAR UM EMPREGADO
 router.delete('/employee/:id', userController.deleteUserById);
 

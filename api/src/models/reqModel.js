@@ -33,9 +33,22 @@ const createUser = async (body) => {
   return funcionario;
 };
 
+const updateUser = async (id, body) => {
+  const funcionarioDb = await getById(id);
+  console.log('funcionarioDb',funcionarioDb);
+  const updatedFuncionario = {
+    ...funcionarioDb.data[0],
+    ...body,
+  };
+  console.log('update',updatedFuncionario);
+  const response = await axios.put(`http://localhost:2899/users/${id}`, updatedFuncionario);
+  return response.data;
+};
+
 module.exports = {
   getAll,
   getById,
   deleteById,
   createUser,
+  updateUser,
 };
