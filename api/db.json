@@ -1,24 +1,14 @@
 {
-    "users": [
-        {
-            "id": 1,
-            "name": "John Doe",
-            "document": "123456789",
-            "email": "jon@email.com",
-            "phone": 123456789,
-            "birth_date": "1990-01-01",
-            "salary": 1000.00,
-            "created_at": "2019-01-01 00:00:00"
-        },
-        {
-            "id": 2,
-            "name": "Jane Doe",
-            "document": 123456789,
-            "email": "jon@email.com",
-            "phone": 123456789,
-            "birth_date": "1990-01-01",
-            "salary": 1000.00,
-            "created_at": "2019-01-01 00:00:00"
-        }
-    ]
+  "users": [
+    {
+      "id": "d665878b-35cc-4b85-8436-7b91bec21d99",
+      "name": "Murylo",
+      "document": "123456789",
+      "email": "murylo@email.com",
+      "phone": 123456789,
+      "birth_date": "1990-03-21",
+      "salary": 3200,
+      "created_at": "2023-03-31T00:42:17.104Z"
+    }
+  ]
 }

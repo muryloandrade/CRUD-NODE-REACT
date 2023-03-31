@@ -18,8 +18,14 @@ const deleteUserById = async (req, res) => {
   res.status(200).json(user.data);
 };
 
+const createUser = async (req, res) => {
+  const user = await reqModel.createUser(req.body);
+  res.status(200).json(user.data);
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   deleteUserById,
+  createUser,
 };

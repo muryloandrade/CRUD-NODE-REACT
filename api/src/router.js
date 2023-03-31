@@ -1,7 +1,8 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const userController = require('./controllers/usersController');
 
-const router = express.Router();
+const router = express.Router().use(bodyParser.json());
 
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR TRAZER TODOS OS EMPREGADOS
 router.get('/employee', userController.getAllUsers);
@@ -9,9 +10,7 @@ router.get('/employee', userController.getAllUsers);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR TRAZER UM EMPREGADO ESPECIFICO
 router.get('/employee/:id', userController.getUserById);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR CRIAR UM EMPREGADO
-router.post('/employee', (req, res) => {
-  res.status(200).send('router funcionando');
-});
+router.post('/employee', userController.createUser);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR ATUALIZAR UM EMPREGADO
 router.put('/employee/:id', (req, res) => {
   res.status(200).send('router funcionando');
