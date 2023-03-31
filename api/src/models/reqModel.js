@@ -11,7 +11,17 @@ const getById = async (id) => {
   return funcionario;
 };
 
+const deleteLogic = async (id) => {
+  const funcionarioBKP = await getById(id);
+  const deleteLogic = {
+    ...funcionarioBKP.data[0],
+  };
+  const response = await axios.post('http://localhost:2899/usersDesactive/', deleteLogic);
+  return response.data;
+};
+
 const deleteById = async (id) => {
+  await deleteLogic(id);
   const funcionario = await axios.delete(`http://localhost:2899/users/${id}`);
   return funcionario;
 };
