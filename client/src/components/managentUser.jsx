@@ -61,18 +61,23 @@ const UserTable = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
-                            <TableCell>ID</TableCell>
                             <TableCell>Name</TableCell>
                             <TableCell>Email</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell>Telefone</TableCell>
+                            <TableCell>Documento</TableCell>
+                            <TableCell>Aniversário</TableCell>
+                            <TableCell>Salario</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {users.map((user) => (
                             <TableRow key={user.id}>
-                                <TableCell>{user.id}</TableCell>
                                 <TableCell>{user.name}</TableCell>
                                 <TableCell>{user.email}</TableCell>
+                                <TableCell>{user.phone}</TableCell>
+                                <TableCell>{user.document}</TableCell>
+                                <TableCell>{user.birth_date}</TableCell>
+                                <TableCell>{user.salary}</TableCell>
                                 <TableCell>
                                     <IconButton onClick={() => handleEditUser(user)}>
                                         <Edit />
