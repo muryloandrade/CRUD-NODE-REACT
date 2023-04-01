@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
     Table,
     TableBody,
@@ -14,15 +14,25 @@ import {
 } from '@material-ui/core'
 import { Edit } from '@material-ui/icons'
 import { useFormik } from 'formik'
+import axios from 'axios'
 
-const users = [
-    { id: 1, name: 'Murylo', email: 'murylo@example.com' },
-    { id: 2, name: 'adriely', email: 'adriely@example.com' },
-    { id: 3, name: 'ana', email: 'ana@example.com' },
-]
+
 
 const UserTable = () => {
     const [editUser, setEditUser] = useState(null)
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        axios
+            .get('http://localhost:5173/employee')
+            .then((res) => {
+                setUsers(res.data)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }, [])
+
 
     const handleEditUser = (user) => {
         setEditUser(user)
