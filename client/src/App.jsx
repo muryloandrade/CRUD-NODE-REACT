@@ -1,5 +1,5 @@
 import './index.scss'
-import User from './components/UserManagement/user'
+import User from './pages/users/user'
 import React from 'react'
 
 function App() {

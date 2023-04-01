@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 import './navbar.scss'
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep'
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
+import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   
@@ -13,13 +14,16 @@ export default function Navbar() {
             <AppBar>
                 <Toolbar className='toolBar'>
                     <div className='buttons'>
-                        <Button variant="contained" href="#contained-buttons">
-                            <SupervisorAccountIcon/>
-                        </Button>
-                        <Button variant="contained" href="#contained-buttons">
-                            <DeleteSweepIcon/>
-                        </Button>
-
+                        <NavLink to="/" className="nav-link">
+                            <Button variant="contained" href="/">
+                                <SupervisorAccountIcon/>
+                            </Button>
+                        </NavLink>
+                        <NavLink to="/lixeira" className="nav-link">
+                            <Button variant="contained" href="/lixeira">
+                                <DeleteSweepIcon/>
+                            </Button>
+                        </NavLink>
                     </div>
                     <Typography variant="h6" className='logo-seven'>
                         <img src={Logo} alt="Logo" className="ico-small"/>

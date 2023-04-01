@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../NavBar/navbar'
-import UserTable from '../managentUser'
+import Navbar from '../../components/NavBar/navbar'
+import UserTable from '../../components/UserManagement/managentUser'
 // import Config from '../UserManagement/user'
 function User () {
     return(
