@@ -1,7 +1,7 @@
 import React from 'react'
 import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
 import { Menu as MenuIcon } from '@material-ui/icons'
-import Logo from '../../../public/logo-seven-white.png'
+import Logo from '../../assets/logo-seven-white.png'
 import './navbar.scss'
 // import { Formik, Form } from 'formik'
 
