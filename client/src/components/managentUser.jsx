@@ -33,6 +33,16 @@ const UserTable = () => {
             })
     }, [])
 
+    useEffect(() => {
+        formik.setValues({
+            name: editUser ? editUser.name : '',
+            email: editUser ? editUser.email : '',
+            phone: editUser ? editUser.phone : '',
+            document: editUser ? editUser.document : '',
+            birth_date: editUser ? editUser.birth_date : '',
+            salary: editUser ? editUser.salary : '',
+        })
+    }, [editUser])
 
     const handleEditUser = (user) => {
         setEditUser(user)
@@ -49,8 +59,8 @@ const UserTable = () => {
 
     const formik = useFormik({
         initialValues: {
-            name: editUser ? editUser.name : '',
-            email: editUser ? editUser.email : '',
+            name: '',
+            email: '',
         },
         onSubmit: handleSaveEditModal,
     })
@@ -107,6 +117,35 @@ const UserTable = () => {
                             onChange={formik.handleChange}
                             fullWidth
                         />
+                        <TextField
+                            label="Phone"
+                            name="phone"
+                            value={formik.values.phone}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        <TextField
+                            label="Document"
+                            name="document"
+                            value={formik.values.document}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        <TextField
+                            label="Birth Date"
+                            name="birth_date"
+                            value={formik.values.birth_date}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        <TextField
+                            label="Salary"
+                            name="salary"
+                            value={formik.values.salary}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        
                         <Button type="submit" variant="contained" color="primary" style={{ marginTop: '10px' }}>Save</Button>
                     </form>
                 </div>
@@ -116,3 +155,4 @@ const UserTable = () => {
 }
 
 export default UserTable
+
