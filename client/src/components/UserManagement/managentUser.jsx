@@ -12,10 +12,6 @@ import {
     IconButton,
     Modal,
     TextField,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem
 } from '@material-ui/core'
 import { Edit, Delete } from '@material-ui/icons'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
@@ -116,7 +112,6 @@ const UserTable = () => {
                             <TableCell>Telefone</TableCell>
                             <TableCell>Salario</TableCell>
                             <TableCell>Aniversario</TableCell>
-                            <TableCell>Role</TableCell>
                             <TableCell align="center">Actions</TableCell>
                         </TableRow>
                     </TableHead>
@@ -131,7 +126,6 @@ const UserTable = () => {
                                 <TableCell>{user.phone}</TableCell>
                                 <TableCell>{user.salary}</TableCell>
                                 <TableCell>{user.birth_date}</TableCell>
-                                <TableCell>{user.role}</TableCell>
                                 <TableCell align="center">
                                     <IconButton onClick={() => handleEditClick(user)}>
                                         <Edit />
@@ -166,95 +160,75 @@ const UserTable = () => {
                         validationSchema={validationSchema}
                         onSubmit={handleUpdate}
                     >
-                        {({ values, handleChange, handleBlur }) => (
-                            <Form>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="name"
-                                        label="Name"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                    <ErrorMessage name="name" />
-                                </div>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="email"
-                                        label="Email"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                    <ErrorMessage name="email" />
-                                </div>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="document"
-                                        label="Document"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                </div>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="phone"
-                                        label="Phone"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                </div>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="salary"
-                                        label="Salary"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                </div>
-                                <div>
-                                    <Field
-                                        as={TextField}
-                                        name="birth_date"
-                                        label="Birth Date"
-                                        variant="outlined"
-                                        margin="normal"
-                                        fullWidth
-                                    />
-                                </div>
-                                <div>
-                                    <FormControl variant="outlined" margin="normal" fullWidth>
-                                        <InputLabel id="role-label">Role</InputLabel>
-                                        <Field
-                                            as={Select}
-                                            name="role"
-                                            labelId="role-label"
-                                            label="Role"
-                                            value={values.role}
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                        >
-                                            <MenuItem value="admin">Admin</MenuItem>
-                                            <MenuItem value="user">User</MenuItem>
-                                        </Field>
-                                    </FormControl>
-                                    <ErrorMessage name="role" />
-                                </div>
-                                <div>
-                                    <Button type="submit" variant="contained" color="primary">
+                        <Form>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="name"
+                                    label="Name"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                                <ErrorMessage name="name" />
+                            </div>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="email"
+                                    label="Email"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                                <ErrorMessage name="email" />
+                            </div>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="document"
+                                    label="Document"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                            </div>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="phone"
+                                    label="Phone"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                            </div>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="salary"
+                                    label="Salary"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                            </div>
+                            <div>
+                                <Field
+                                    as={TextField}
+                                    name="birth_date"
+                                    label="Birth Date"
+                                    variant="outlined"
+                                    margin="normal"
+                                    fullWidth
+                                />
+                            </div>
+                            <div>
+                                <Button type="submit" variant="contained" color="primary">
                                     Update
-                                    </Button>
-                                </div>
-                            </Form>
-                        )}
+                                </Button>
+                            </div>
+                        </Form>
                     </Formik>
                 </div>
             </Modal>
@@ -276,60 +250,89 @@ const UserTable = () => {
                 initialValues={{
                     name: '',
                     email: '',
-                    role: '',
+                    document: '',
+                    phone: '',
+                    salary: '',
+                    birth_date: '',
                 }}
                 validationSchema={validationSchema}
                 onSubmit={handleCreate}
             >
-                {({ values, handleChange, handleBlur }) => (
-                    <Form>
-                        <div>
-                            <Field
-                                as={TextField}
-                                name="name"
-                                label="Name"
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                            />
-                            <ErrorMessage name="name" />
-                        </div>
-                        <div>
-                            <Field
-                                as={TextField}
-                                name="email"
-                                label="Email"
-                                variant="outlined"
-                                margin="normal"
-                                fullWidth
-                            />
-                            <ErrorMessage name="email" />
-                        </div>
-                        <div>
-                            <FormControl variant="outlined" margin="normal" fullWidth>
-                                <InputLabel id="role-label">Role</InputLabel>
-                                <Field
-                                    as={Select}
-                                    name="role"
-                                    labelId="role-label"
-                                    label="Role"
-                                    value={values.role}
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                >
-                                    <MenuItem value="admin">Admin</MenuItem>
-                                    <MenuItem value="user">User</MenuItem>
-                                </Field>
-                            </FormControl>
-                            <ErrorMessage name="role" />
-                        </div>
-                        <div>
-                            <Button type="submit" variant="contained" color="primary">
+                <Form>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="name"
+                            label="Name"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="name" />
+                    </div>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="email"
+                            label="Email"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="email" />
+                    </div>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="document"
+                            label="Document"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="document" />
+
+                    </div>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="phone"
+                            label="Phone"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="phone" />
+                    </div>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="salary"
+                            label="Salary"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="salary" />
+                    </div>
+                    <div>
+                        <Field
+                            as={TextField}
+                            name="birth_date"
+                            label="Birth Date"
+                            variant="outlined"
+                            margin="normal"
+                            fullWidth
+                        />
+                        <ErrorMessage name="birth_date" />
+                    </div>
+
+                    <div>
+                        <Button type="submit" variant="contained" color="primary">
                             Create
-                            </Button>
-                        </div>
-                    </Form>
-                )}
+                        </Button>
+                    </div>
+                </Form>
             </Formik>
         </>
     )
