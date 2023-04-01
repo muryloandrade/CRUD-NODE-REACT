@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
 import {
     Table,
     TableBody,
@@ -8,58 +7,48 @@ import {
     TableHead,
     TableRow,
     Paper,
-    Button,
+    IconButton,
     Modal,
     TextField,
+    Button,
 } from '@material-ui/core'
-import { Formik, Form, Field } from 'formik'
+import { Edit } from '@material-ui/icons'
+import { useFormik } from 'formik'
 
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-    modal: {
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    paper: {
-        backgroundColor: '#fff',
-        padding: 20,
-        borderRadius: 10,
-    },
-})
-
-const initialUsers = [
-    { id: 1, name: 'John Doe', email: 'johndoe@example.com' },
-    { id: 2, name: 'Jane Doe', email: 'janedoe@example.com' },
+const users = [
+    { id: 1, name: 'Murylo', email: 'murylo@example.com' },
+    { id: 2, name: 'adriely', email: 'adriely@example.com' },
+    { id: 3, name: 'ana', email: 'ana@example.com' },
 ]
 
 const UserTable = () => {
-    const classes = useStyles()
-    const [users, setUsers] = useState(initialUsers)
-    const [selectedUser, setSelectedUser] = useState(null)
+    const [editUser, setEditUser] = useState(null)
 
-    const handleEditClick = (user) => {
-        setSelectedUser(user)
+    const handleEditUser = (user) => {
+        setEditUser(user)
     }
 
-    const handleCloseModal = () => {
-        setSelectedUser(null)
+    const handleCloseEditModal = () => {
+        setEditUser(null)
     }
 
-    const handleSaveUser = (values) => {
-        const updatedUsers = users.map((user) =>
-            user.id === values.id ? { ...user, ...values } : user
-        )
-        setUsers(updatedUsers)
-        setSelectedUser(null)
+    const handleSaveEditModal = (values) => {
+        console.log(values)
+        setEditUser(null)
     }
+
+    const formik = useFormik({
+        initialValues: {
+            name: editUser ? editUser.name : '',
+            email: editUser ? editUser.email : '',
+        },
+        onSubmit: handleSaveEditModal,
+    })
 
     return (
-        <div>
+        <>
             <TableContainer component={Paper}>
-                <Table className={classes.table} aria-label="Users table">
+                <Table>
                     <TableHead>
                         <TableRow>
                             <TableCell>ID</TableCell>
@@ -71,64 +60,43 @@ const UserTable = () => {
                     <TableBody>
                         {users.map((user) => (
                             <TableRow key={user.id}>
-                                <TableCell component="th" scope="row">
-                                    {user.id}
-                                </TableCell>
+                                <TableCell>{user.id}</TableCell>
                                 <TableCell>{user.name}</TableCell>
                                 <TableCell>{user.email}</TableCell>
                                 <TableCell>
-                                    <Button
-                                        variant="contained"
-                                        color="primary"
-                                        onClick={() => handleEditClick(user)}
-                                    >
-                    Edit
-                                    </Button>
+                                    <IconButton onClick={() => handleEditUser(user)}>
+                                        <Edit />
+                                    </IconButton>
                                 </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </TableContainer>
-            <Modal
-                className={classes.modal}
-                open={Boolean(selectedUser)}
-                onClose={handleCloseModal}
-            >
-                <div className={classes.paper}>
-                    <Formik
-                        initialValues={selectedUser}
-                        onSubmit={handleSaveUser}
-                    >
-                        {({ values, handleChange }) => (
-                            <Form>
-                                <Field
-                                    as={TextField}
-                                    name="name"
-                                    label="Name"
-                                    value={values.name}
-                                    onChange={handleChange}
-                                    fullWidth
-                                    margin="normal"
-                                />
-                                <Field
-                                    as={TextField}
-                                    name="email"
-                                    label="Email"
-                                    value={values.email}
-                                    onChange={handleChange}
-                                    fullWidth
-                                    margin="normal"
-                                />
-                                <Button type="submit" variant="contained" color="primary">
-                  Save
-                                </Button>
-                            </Form>
-                        )}
-                    </Formik>
+
+            <Modal open={Boolean(editUser)} onClose={handleCloseEditModal}>
+                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', backgroundColor: 'white', padding: '20px' }}>
+                    <h2>Edit User</h2>
+                    <form onSubmit={formik.handleSubmit}>
+                        <TextField
+                            label="Name"
+                            name="name"
+                            value={formik.values.name}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        <TextField
+                            label="Email"
+                            name="email"
+                            value={formik.values.email}
+                            onChange={formik.handleChange}
+                            fullWidth
+                        />
+                        <Button type="submit" variant="contained" color="primary" style={{ marginTop: '10px' }}>Save</Button>
+                    </form>
                 </div>
             </Modal>
-        </div>
+        </>
     )
 }
 
