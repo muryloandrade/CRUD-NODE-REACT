@@ -11,8 +11,8 @@ export default function Navbar() {
     return (
         <div>
             <AppBar>
-                <Toolbar>
-                    <div>
+                <Toolbar className='toolBar'>
+                    <div className='buttons'>
                         <Button variant="contained" href="#contained-buttons">
                             <SupervisorAccountIcon/>
                         </Button>
