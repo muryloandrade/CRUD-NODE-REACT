@@ -12,8 +12,8 @@
 }
 
 .logo-seven{
-    justify-content: center;
-    align-items: center;
+    justify-content: end;
+    align-items: end;
     display: flex;
     width: 100%;
 
@@ -24,3 +24,10 @@
     margin-right: 2rem;
 
 }
+
+.buttons{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+

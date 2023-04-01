@@ -1,9 +1,10 @@
 import React from 'react'
-import { AppBar, Toolbar, IconButton, Typography } from '@material-ui/core'
-import { Menu as MenuIcon } from '@material-ui/icons'
+import { AppBar, Toolbar,Typography } from '@material-ui/core'
 import Logo from '../../assets/logo-seven-white.png'
+import Button from '@material-ui/core/Button'
 import './navbar.scss'
-// import { Formik, Form } from 'formik'
+import DeleteSweepIcon from '@material-ui/icons/DeleteSweep'
+import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount'
 
 export default function Navbar() {
   
@@ -11,33 +12,18 @@ export default function Navbar() {
         <div>
             <AppBar >
                 <Toolbar className='toolBar'>
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                    >
-                        <MenuIcon />
-                    </IconButton>
+                    <div className='buttons'>
+                        <Button variant="contained" href="#contained-buttons">
+                            <SupervisorAccountIcon/>
+                        </Button>
+                        <Button variant="contained" href="#contained-buttons">
+                            <DeleteSweepIcon/>
+                        </Button>
+
+                    </div>
                     <Typography variant="h6" className='logo-seven'>
                         <img src={Logo} alt="Logo" className="ico-small"/>
                     </Typography>
-                    {/* <Formik
-                        initialValues={{ search: '' }}
-                        onSubmit={(values) => console.log(values)}
-                    >
-                        {({ values, handleChange }) => (
-                            <Form>
-                                <input
-                                    type="text"
-                                    name="search"
-                                    placeholder="Pesquisar"
-                                    value={values.search}
-                                    onChange={handleChange}
-                                />
-                                <button type="submit">Pesquisar</button>
-                            </Form>
-                        )}
-                    </Formik> */}
                 </Toolbar>
             </AppBar>
         </div>
