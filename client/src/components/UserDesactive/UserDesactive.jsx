@@ -20,18 +20,21 @@ const UserDesactive = () => {
         axios.post('http://localhost:5173/employee', values)
             .then(response => {
                 setUsers(users.filter((u) => u.id !== response.id))
+                handleDeleteClick(values.id)
             })
             .catch(error => console.error(error))
     } 
 
     
-    // const handleDeleteClick = (id) => {
-    //     axios.delete("http://localhost:2899/usersDesactive")
-    // }
-    
     const handleDeleteClick = (id) => {
-        console.log(id)
+        axios.delete(`http://localhost:2899/usersDesactive?id=${id}`)
+            .then(() => {
+                setUsers(users.filter((u) => u.id !== id))
+            }
+            )
+            .catch(error => console.error(error))       
     }
+    
 
     return (
         <>

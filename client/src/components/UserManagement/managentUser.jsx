@@ -187,41 +187,47 @@ const UserTable = () => {
                     </Formik>
                 </div>
             </Modal>
-            <TableContainer>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Email</TableCell>
-                            <TableCell>Document</TableCell>
-                            <TableCell>Phone</TableCell>
-                            <TableCell>Salary</TableCell>
-                            <TableCell>Birth Date</TableCell>
-                            <TableCell>Actions</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {users.map((user) => (
-                            <TableRow key={user.id}>
-                                <TableCell>{user.name}</TableCell>
-                                <TableCell>{user.email}</TableCell>
-                                <TableCell>{user.document}</TableCell>
-                                <TableCell>{user.phone}</TableCell>
-                                <TableCell>{user.salary}</TableCell>
-                                <TableCell>{user.birth_date}</TableCell>
-                                <TableCell>
-                                    <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
-                                    Edit
-                                    </Button>
-                                    <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
-                                    Delete
-                                    </Button>
-                                </TableCell>
+            {users.length > 0 ? (
+                <TableContainer>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Name</TableCell>
+                                <TableCell>Email</TableCell>
+                                <TableCell>Document</TableCell>
+                                <TableCell>Phone</TableCell>
+                                <TableCell>Salary</TableCell>
+                                <TableCell>Birth Date</TableCell>
+                                <TableCell>Actions</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+                        </TableHead>
+                        <TableBody>
+                            {users.map((user) => (
+                                <TableRow key={user.id}>
+                                    <TableCell>{user.name}</TableCell>
+                                    <TableCell>{user.email}</TableCell>
+                                    <TableCell>{user.document}</TableCell>
+                                    <TableCell>{user.phone}</TableCell>
+                                    <TableCell>{user.salary}</TableCell>
+                                    <TableCell>{user.birth_date}</TableCell>
+                                    <TableCell>
+                                        <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
+                                    Edit
+                                        </Button>
+                                        <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
+                                    Delete
+                                        </Button>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            ) : (
+                <div>
+                    <h2>No users found</h2>
+                </div>
+            )}
             <Button variant="contained" color="primary" onClick={handleCreateClick}>
         Create User
             </Button>
