@@ -41,7 +41,6 @@ const UserTable = () => {
     }
 
     const handleEditClose = () => {
-        setCurrentUser(null)
         setEditModalOpen(false)
     }
 
@@ -59,9 +58,14 @@ const UserTable = () => {
 
     const handleUpdate = async (values, actions) => {
         try {
-            const response = await axios.put(`http://localhost:5173/employee/${currentUser.id}`, values)
-            setUsers(users.map((user) => (user.id === currentUser.id ? response.data : user)))
+            axios.put(`http://localhost:5173/employee/${currentUser.id}`, values)
+                .then(response => {
+                    console.log(response)
+                })
+                .catch(error => console.error(error))            
             handleEditClose()
+            setUsers(users.map((u) => (u.id === currentUser.id ? { ...u, ...values } : u)))
+        
         } catch (error) {
             console.error(error)
         } finally {
