@@ -7,12 +7,8 @@ const Trash = () => {
     
     return (
         <>
-            <nav>
-                <Navbar />                
-            </nav>
-            <div>
-                <UserDesactive />
-            </div>
+            <Navbar />                
+            <UserDesactive />
         </>
     )
 }

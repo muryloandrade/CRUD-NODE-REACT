@@ -5,17 +5,8 @@ import UserTable from '../../components/UserManagement/managentUser'
 function User () {
     return(
         <>
-            <nav>
-                <Navbar />                
-            </nav>
-            <h1>
-                User Management
-            </h1>
-            <div>
-                <UserTable />
-            </div>
-
-            
+            <Navbar />                
+            <UserTable />
         </>
 
     )
