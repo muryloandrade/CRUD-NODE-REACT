@@ -4,14 +4,15 @@ import { Button, TextField, Modal,TableContainer,Table,TableCell,TableHead,Table
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './userActive.scss'
+import InfoIcon from '@material-ui/icons/Info'
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required('Required'),
-    email: Yup.string().email('Invalid email').required('Required'),
-    document: Yup.string().required('Required'),
-    phone: Yup.string().required('Required'),
-    salary: Yup.number().required('Required'),
-    birth_date: Yup.date().required('Required'),
+    name: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    email: Yup.string().email('Invalid email').required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    document: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    phone: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    salary: Yup.number().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    birth_date: Yup.date().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
 })
 
 const UserTable = () => {
@@ -85,9 +86,10 @@ const UserTable = () => {
 
     return (
         <div style={{width:'100%'}}>
-            <Modal open={createModalOpen} onClose={handleCreateClose}>
-                <div>
-                    <h2>Create User</h2>
+            <Modal open={createModalOpen} onClose={handleCreateClose} aria-labelledby="parent-modal-title"
+                aria-describedby="parent-modal-description" className='modal'>
+                <div className='modal-child'>
+                    <h2 style={{alignItems:'center',justifyContent:'center',display:'flex'}}>Crie um Usuário</h2>
                     <Formik
                         initialValues={{
                             name: '',
@@ -103,7 +105,7 @@ const UserTable = () => {
                         {({ isSubmitting }) => (
                             <Form>
                                 <div>
-                                    <Field as={TextField} name="name" label="Name" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="name" label="Nome" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="name" />
                                 </div>
                                 <div>
@@ -111,24 +113,24 @@ const UserTable = () => {
                                     <ErrorMessage name="email" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="document" label="Document" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="document" label="CPF" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="document" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="phone" label="Phone" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="phone" label="Telefone" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="phone" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="salary" label="Salary" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="salary" label="Salário" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="salary" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="birth_date" label="Birth Date" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="birth_date" label="Data de Nascimento" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="birth_date" />
                                 </div>
-                                <div>
-                                    <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
-                        Create
+                                <div style={{alignItems:'center',justifyContent:'center',display:'flex'}}>
+                                    <Button type="submit" variant="contained" color="primary" size='large' disabled={isSubmitting}>
+                                        Create
                                     </Button>
                                 </div>
                             </Form>
@@ -225,15 +227,15 @@ const UserTable = () => {
                         </Table>
                     </TableContainer>
                     <Button variant="contained" color="primary" onClick={handleCreateClick}>
-                            Create User
+                        Crie um usuário
                     </Button>
                 </div>
 
             ) : (
                 <div className='no-user'>
-                    <h2>No users found</h2>
+                    <h2>Você não tem usuários</h2>
                     <Button variant="contained" color="primary" onClick={handleCreateClick}>
-                        Create User
+                        Crie um usuário
                     </Button>
                 </div>
             )}

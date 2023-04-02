@@ -1,9 +1,22 @@
 .no-user{
-    background-color: black;
     color:white;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     height: 100vh;
+}
+
+
+
+.modal-child{
+    background-color: white;
+    width: 80%;
+    height: 90%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    
 }
