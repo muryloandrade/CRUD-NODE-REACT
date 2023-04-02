@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Button, TextField, Modal,TableContainer,Table,TableCell,TableHead,TableRow,TableBody } from '@material-ui/core'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import './userActive.scss'
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required('Required'),
@@ -83,8 +84,7 @@ const UserTable = () => {
     }
 
     return (
-        <div>
-
+        <div style={{width:'100%'}}>
             <Modal open={createModalOpen} onClose={handleCreateClose}>
                 <div>
                     <h2>Create User</h2>
@@ -188,49 +188,56 @@ const UserTable = () => {
                 </div>
             </Modal>
             {users.length > 0 ? (
-                <TableContainer>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Document</TableCell>
-                                <TableCell>Phone</TableCell>
-                                <TableCell>Salary</TableCell>
-                                <TableCell>Birth Date</TableCell>
-                                <TableCell>Actions</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {users.map((user) => (
-                                <TableRow key={user.id}>
-                                    <TableCell>{user.name}</TableCell>
-                                    <TableCell>{user.email}</TableCell>
-                                    <TableCell>{user.document}</TableCell>
-                                    <TableCell>{user.phone}</TableCell>
-                                    <TableCell>{user.salary}</TableCell>
-                                    <TableCell>{user.birth_date}</TableCell>
-                                    <TableCell>
-                                        <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
-                                    Edit
-                                        </Button>
-                                        <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
-                                    Delete
-                                        </Button>
-                                    </TableCell>
+                <div style={{width:'100%'}}>
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Name</TableCell>
+                                    <TableCell>Email</TableCell>
+                                    <TableCell>Document</TableCell>
+                                    <TableCell>Phone</TableCell>
+                                    <TableCell>Salary</TableCell>
+                                    <TableCell>Birth Date</TableCell>
+                                    <TableCell>Actions</TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
+                            </TableHead>
+                            <TableBody>
+                                {users.map((user) => (
+                                    <TableRow key={user.id}>
+                                        <TableCell>{user.name}</TableCell>
+                                        <TableCell>{user.email}</TableCell>
+                                        <TableCell>{user.document}</TableCell>
+                                        <TableCell>{user.phone}</TableCell>
+                                        <TableCell>{user.salary}</TableCell>
+                                        <TableCell>{user.birth_date}</TableCell>
+                                        <TableCell>
+                                            <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
+                                    Edit
+                                            </Button>
+                                            <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
+                                    Delete
+                                            </Button>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <Button variant="contained" color="primary" onClick={handleCreateClick}>
+                            Create User
+                    </Button>
+                </div>
+
             ) : (
-                <div>
+                <div className='no-user'>
                     <h2>No users found</h2>
+                    <Button variant="contained" color="primary" onClick={handleCreateClick}>
+                        Create User
+                    </Button>
                 </div>
             )}
-            <Button variant="contained" color="primary" onClick={handleCreateClick}>
-        Create User
-            </Button>
+
         </div>
     )
 }

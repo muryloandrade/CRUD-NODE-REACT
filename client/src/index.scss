@@ -1,7 +1,18 @@
-html,
-body,
-.App,
-#root {
+body {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #333;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+
 }

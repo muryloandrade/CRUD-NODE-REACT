@@ -1,6 +1,5 @@
 import React from 'react'
 import { AppBar, Toolbar } from '@material-ui/core'
-import Logo from '../../assets/logo-seven-white.png'
 import Button from '@material-ui/core/Button'
 import './navbar.scss'
 import DeleteSweepIcon from '@material-ui/icons/DeleteSweep'
@@ -11,8 +10,8 @@ export default function Navbar() {
   
     return (
         <div>
-            <AppBar position="static" className="navbar">
-                <Toolbar className='toolBar'>
+            <AppBar position="static" className='navbar'>
+                <Toolbar>
                     <div className="buttons">
                         <NavLink to="/" className="link">
                             <Button className="button">
@@ -30,9 +29,6 @@ export default function Navbar() {
                                 </h1>
                             </Button>
                         </NavLink>
-                    </div>
-                    <div className='logo-seven'>
-                        <img src={Logo} alt="logo" className="ico-small" />
                     </div>
                 </Toolbar>
             </AppBar>

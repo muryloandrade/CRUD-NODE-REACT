@@ -8,15 +8,12 @@ import Trash from './pages/lixeira/trash'
 
 const Router = () => {
     return (
-        <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/" element={<User />} />
-                    <Route path="/lixeira" element={<Trash />} />
-                </Routes>
-            </BrowserRouter>
-        </>
-          
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<User />} />
+                <Route path="/lixeira" element={<Trash />} />
+            </Routes>
+        </BrowserRouter>
     )
 }
 
