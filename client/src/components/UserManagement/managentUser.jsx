@@ -152,7 +152,21 @@ const UserTable = () => {
                                     <ErrorMessage name="document" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="phone" label="Telefone" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="phone"
+                                        label="Telefone"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        onChange={(event) => {
+                                            const formattedPhoneNumber = formatPhoneNumber(event.target.value)
+                                            if (formattedPhoneNumber !== event.target.value) {
+                                                event.target.value = formattedPhoneNumber
+                                            }
+                                            setFieldValue('phone', formattedPhoneNumber)
+                                        }}
+                                    />
                                     <ErrorMessage name="phone" />
                                 </div>
                                 <div>
@@ -272,7 +286,7 @@ const UserTable = () => {
                                         <TableCell>{formatPhoneNumber(user.phone)}</TableCell>
                                         <TableCell>R${user.salary}</TableCell>
                                         <TableCell>{formatDateTable(user.birth_date)}</TableCell>
-                                        <TableCell>
+                                        <TableCell>                                                
                                             <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
                                                 <EditIcon />
                                             </Button>
