@@ -1,6 +1,18 @@
 {
   "users": [
     {
+      "id": "f9aabd62-1d50-468e-9176-d19048303d34",
+      "name": "Murylo",
+      "document": "123456789",
+      "email": "murylo@email.com",
+      "phone": 123456789,
+      "birth_date": "1990-03-21",
+      "salary": 5000,
+      "created_at": "2023-04-02T17:39:39.455Z"
+    }
+  ],
+  "usersDesactive": [
+    {
       "id": "d665878b-35cc-4b85-8436-7b91bec21d99",
       "name": "Murylo",
       "document": "123456789",
@@ -10,7 +22,5 @@
       "salary": 5000,
       "created_at": "2023-03-31T00:42:17.104Z"
     }
-  ],
-  "usersDesactive": [
   ]
 }

@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server.js",
+    "prod": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "db": "json-server --watch db.json --port 2899"
+    "db": "json-server --watch db.json --port 2899",
+    "start": "npm run db && npm run prod"
   },
   "keywords": [],
   "author": "",

@@ -10,8 +10,8 @@ export default function Navbar() {
   
     return (
         <div>
-            <AppBar position="static" className='navbar'>
-                <Toolbar>
+            <AppBar position="static" style={{backgroundColor:'#22305a'}} className='navbar'>
+                <Toolbar style={{backgroundColor:'#22305a'}}>
                     <div className="buttons">
                         <NavLink to="/" className="link">
                             <Button className="button">
