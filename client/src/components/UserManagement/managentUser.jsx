@@ -5,6 +5,16 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import './userActive.scss'
 import InfoIcon from '@material-ui/icons/Info'
+import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
+import PhoneIcon from '@material-ui/icons/Phone'
+import DescriptionIcon from '@material-ui/icons/Description'
+import EmailIcon from '@material-ui/icons/Email'
+import DateRangeIcon from '@material-ui/icons/DateRange'
+import EditIcon from '@material-ui/icons/Edit'
+import DeleteIcon from '@material-ui/icons/Delete'
+
+
+
 
 const validationSchema = Yup.object().shape({
     name: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
@@ -56,6 +66,15 @@ const UserTable = () => {
         } finally {
             actions.setSubmitting(false)
         }
+    }
+
+    function formatPhoneNumber(phoneNumber) {
+        const cleaned = phoneNumber.replace(/\D/g, '')
+        const match = cleaned.match(/^(\d{2})(\d{1,5})(\d{0,4})$/)
+        if (match) {
+            return `(${match[1]}) ${match[2]}-${match[3]}`
+        }      
+        return phoneNumber
     }
 
     const handleUpdate = async (values, actions) => {
@@ -190,18 +209,18 @@ const UserTable = () => {
                 </div>
             </Modal>
             {users.length > 0 ? (
-                <div style={{width:'100%'}}>
-                    <TableContainer>
+                <div>
+                    <TableContainer style={{width:'100%', backgroundColor:'white'}}>
                         <Table>
                             <TableHead>
-                                <TableRow>
-                                    <TableCell>Name</TableCell>
-                                    <TableCell>Email</TableCell>
-                                    <TableCell>Document</TableCell>
-                                    <TableCell>Phone</TableCell>
-                                    <TableCell>Salary</TableCell>
-                                    <TableCell>Birth Date</TableCell>
-                                    <TableCell>Actions</TableCell>
+                                <TableRow >
+                                    <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
+                                    <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell><PhoneIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell> <AttachMoneyIcon style={{ color: 'green' }} /></TableCell>
+                                    <TableCell><DateRangeIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -210,15 +229,15 @@ const UserTable = () => {
                                         <TableCell>{user.name}</TableCell>
                                         <TableCell>{user.email}</TableCell>
                                         <TableCell>{user.document}</TableCell>
-                                        <TableCell>{user.phone}</TableCell>
-                                        <TableCell>{user.salary}</TableCell>
-                                        <TableCell>{user.birth_date}</TableCell>
+                                        <TableCell>{formatPhoneNumber(user.phone)}</TableCell>
+                                        <TableCell>R${user.salary}</TableCell>
+                                        <TableCell>{new Date(user.birth_date).toLocaleDateString()}</TableCell>
                                         <TableCell>
                                             <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
-                                    Edit
+                                                <EditIcon />
                                             </Button>
                                             <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
-                                    Delete
+                                                <DeleteIcon />
                                             </Button>
                                         </TableCell>
                                     </TableRow>
