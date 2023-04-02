@@ -68,6 +68,21 @@ const UserTable = () => {
         }
     }
 
+    function formatDate(date) {
+        const year = date.slice(0, 4)
+        const month = date.slice(4, 6)
+        const day = date.slice(6, 8)
+      
+        return `${year}-${month}-${day}`
+    }
+    const formatDateTable = (dateString) => {
+        const year = dateString.slice(0, 4)
+        const month = dateString.slice(4, 6)
+        const day = dateString.slice(6, 8)
+      
+        return `${day}/${month}/${year}`
+    }
+
     function formatPhoneNumber(phoneNumber) {
         const cleaned = phoneNumber.replace(/\D/g, '')
         const match = cleaned.match(/^(\d{2})(\d{1,5})(\d{0,4})$/)
@@ -76,6 +91,7 @@ const UserTable = () => {
         }      
         return phoneNumber
     }
+
 
     const handleUpdate = async (values, actions) => {
         try {
@@ -121,7 +137,7 @@ const UserTable = () => {
                         validationSchema={validationSchema}
                         onSubmit={handleCreate}
                     >
-                        {({ isSubmitting }) => (
+                        {({ isSubmitting,values,setFieldValue }) => (
                             <Form>
                                 <div>
                                     <Field as={TextField} name="name" label="Nome" variant="outlined" margin="normal" fullWidth />
@@ -144,7 +160,31 @@ const UserTable = () => {
                                     <ErrorMessage name="salary" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="birth_date" label="Data de Nascimento" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="birth_date"
+                                        label="Data de Nascimento"
+                                        format="dd/MM/yyyy"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        type="date"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        InputProps={{
+                                            inputProps: {
+                                                max: new Date().toISOString().slice(0, 10),
+                                            },
+                                            value: formatDate(values.birth_date),
+                                            onChange: (event) => {
+                                                const newValue = event.target.value
+                                                    .replace(/[^0-9]/g, '')
+                                                    .slice(0, 8)
+                                                setFieldValue('birth_date', newValue)
+                                            },
+                                        }}
+                                    />
                                     <ErrorMessage name="birth_date" />
                                 </div>
                                 <div style={{alignItems:'center',justifyContent:'center',display:'flex'}}>
@@ -231,7 +271,7 @@ const UserTable = () => {
                                         <TableCell>{user.document}</TableCell>
                                         <TableCell>{formatPhoneNumber(user.phone)}</TableCell>
                                         <TableCell>R${user.salary}</TableCell>
-                                        <TableCell>{new Date(user.birth_date).toLocaleDateString()}</TableCell>
+                                        <TableCell>{formatDateTable(user.birth_date)}</TableCell>
                                         <TableCell>
                                             <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
                                                 <EditIcon />
