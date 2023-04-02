@@ -92,6 +92,24 @@ const UserTable = () => {
         return phoneNumber
     }
 
+    function formatDocumentNumber(documentNumber) {
+        const cleaned = documentNumber.replace(/\D/g, '')
+        let formatted = ''
+        for (let i = 0; i < cleaned.length; i++) {
+            if (i === 0) {
+                formatted += cleaned[i]
+            } else if (i === 3 || i === 6) {
+                formatted += `.${cleaned[i]}`
+            } else if (i === 8) {
+                formatted += `-${cleaned[i]}`
+            }
+            else {
+                formatted += cleaned[i]
+            }
+        }
+        return formatted
+    }
+
 
     const handleUpdate = async (values, actions) => {
         try {
@@ -148,7 +166,21 @@ const UserTable = () => {
                                     <ErrorMessage name="email" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="document" label="CPF" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="document"
+                                        label="CPF"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        onChange={(event) => {
+                                            const formattedDocumentNumber = formatDocumentNumber(event.target.value)
+                                            if (formattedDocumentNumber !== event.target.value) {
+                                                event.target.value = formattedDocumentNumber
+                                            }
+                                            setFieldValue('document', formattedDocumentNumber)
+                                        }}
+                                    />
                                     <ErrorMessage name="document" />
                                 </div>
                                 <div>
