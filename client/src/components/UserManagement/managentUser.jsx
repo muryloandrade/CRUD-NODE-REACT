@@ -85,31 +85,39 @@ const UserTable = () => {
 
     function formatPhoneNumber(phoneNumber) {
         const cleaned = phoneNumber.replace(/\D/g, '')
-        const match = cleaned.match(/^(\d{2})(\d{1,5})(\d{0,4})$/)
-        if (match) {
-            return `(${match[1]}) ${match[2]}-${match[3]}`
-        }      
-        return phoneNumber
+        if (cleaned.length < 3) {
+            // Trata entrada vazia ou com menos de 3 caracteres
+            return cleaned
+        } else if (cleaned.length < 7) {
+            // Formata a entrada com até 6 dígitos
+            return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2)}`
+        } else if (cleaned.length < 11) {
+            // Formata a entrada com até 10 dígitos
+            return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 6)}-${cleaned.slice(6)}`
+        } else {
+            // Formata a entrada completa com 11 dígitos
+            return `(${cleaned.slice(0, 2)}) ${cleaned.slice(2, 7)}-${cleaned.slice(7, 11)}`
+        }
     }
+      
+      
 
     function formatDocumentNumber(documentNumber) {
         const cleaned = documentNumber.replace(/\D/g, '')
         let formatted = ''
-        for (let i = 0; i < cleaned.length; i++) {
+        for (let i = 0; i < cleaned.length && i < 10; i++) {
             if (i === 0) {
                 formatted += cleaned[i]
             } else if (i === 3 || i === 6) {
                 formatted += `.${cleaned[i]}`
             } else if (i === 8) {
                 formatted += `-${cleaned[i]}`
-            }
-            else {
+            } else {
                 formatted += cleaned[i]
             }
         }
         return formatted
     }
-
 
     const handleUpdate = async (values, actions) => {
         try {
