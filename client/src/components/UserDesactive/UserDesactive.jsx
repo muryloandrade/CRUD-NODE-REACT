@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field } from 'formik'
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'
-
+import './UserDesactive.scss'
 const UserDesactive = () => {
     const [users, setUsers] = useState([])
     const [editingId, setEditingId] = useState(null)
@@ -89,7 +89,10 @@ const UserDesactive = () => {
                     </Table>
                 </TableContainer>
             ) : (
-                <h1>Nenhum usuário desativado</h1>
+                
+                <div className='no-users'>
+                    <h1 style={{color:'white', display:'flex',font:'caption',fontSize:'1.5em'}}>Nenhum usuário excluído</h1>
+                </div>
             )}
 
         </>

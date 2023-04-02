@@ -5,7 +5,7 @@ const Trash = () => {
     return (
         <div style={{width:'100%'}}>
             <Navbar />                
-            <UserDesactive />
+            <UserDesactive/>
         </div>
     )
 }
