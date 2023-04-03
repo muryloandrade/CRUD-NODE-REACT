@@ -54,6 +54,9 @@ A aplicação também trás a disponibilidade de Criar Usuários seguindo o mesm
 
 Fiz duas rotas, uma para o CRUD dos usuários e outra para a lixeira, trazendo a idéia de deleção lógica, a tabela é bem parecida mas traz somente informações mais cruciais para tomada de decisão se aquele usuário deve ser revertido para os demais ou excluído de vez, em "ações" o botão azul é responsável por reverter e o amarelo para apagar pra sempre
 
+### Responsividade
+O layout também foi feito responsivo para vizualização mobile
+
 ## Pré-requisitos
 
 Antes de começar, verifique se você possui os seguintes requisitos:
