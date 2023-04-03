@@ -75,6 +75,17 @@ Para utilizar a API, utilize as seguintes rotas:
 | PUT    | /employee/:id      | Edita as informações de um funcionário cadastrado           |
 | DELETE | /employee/:id      | Realiza a deleção lógica de um funcionário cadastrado       |
 
+## Cometários
+
+Durante o processo de desenvolvimento e conforme a maneira que optei de realizar a deleção lógica, se fez a necessidade de criação de dois novos endpoints
+
+| Método | Rota                        | Descrição                                                 |
+|--------|-----------------------------|-----------------------------------------------------------|
+| GET    | /employeeDesactive          | Lista todos os funcionários Desativados                   |
+| DELETE | /employeeDesactive/:id      | Realiza a deleção definitiva do funcionário na lixeira    |
+
+
+
 ### Exemplo de Requisição
 
 Para realizar uma requisição, utilize o seguinte exemplo:

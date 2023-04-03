@@ -20,6 +20,17 @@ const deleteLogic = async (id) => {
   return response.data;
 };
 
+const deleteCertainty = async (id) => {
+  const response = await axios.delete(`http://localhost:2899/usersDesactive/${id}`);
+  return response.data;
+};
+
+const getAllDesactive = async () => {
+  const funcionarios = await axios.get('http://localhost:2899/usersDesactive');
+  return funcionarios;
+};
+
+
 const deleteById = async (id) => {
   await deleteLogic(id);
   const funcionario = await axios.delete(`http://localhost:2899/users/${id}`);
@@ -60,4 +71,6 @@ module.exports = {
   deleteById,
   createUser,
   updateUser,
+  deleteCertainty,
+  getAllDesactive,
 };

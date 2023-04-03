@@ -64,10 +64,35 @@ const putUser = async (req, res) => {
   }
 };
 
+const deleteLogicCertainty = async (req, res) => {
+  const { id } = req.params;
+  const user = await reqModel.deleteCertainty(id);
+  //TRATATIVA DE ERRO
+  if (user.data.error) {
+    return res.status(400).json({ message: user.data.error });
+  }
+  else{
+    res.status(200).json(user.data);
+  }
+};
+
+const getAllUsersDesactive = async (req, res) => {
+  const users = await reqModel.getAllDesactive();
+  //TRATATIVA DE ERRO
+  if (users.data.error) {
+    return res.status(400).json({ message: users.data.error });
+  }
+  else{
+    res.status(200).json(users.data);
+  }
+};
+
 module.exports = {
   getAllUsers,
   getUserById,
   deleteUserById,
   postUser,
   putUser,
+  deleteLogicCertainty,
+  getAllUsersDesactive,
 };

@@ -19,6 +19,9 @@ router.put('/employee/:id', userController.putUser);
 //ROTA A SEGUIR VAI SER RESPONSAVEL POR DELETAR UM EMPREGADO
 router.delete('/employee/:id', userController.deleteUserById);
 
+router.delete('/employeeDesactive/:id', userController.deleteLogicCertainty);
+router.get('/employeeDesactive', userController.getAllUsersDesactive);
+
 
 
 module.exports = router;
