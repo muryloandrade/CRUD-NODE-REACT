@@ -253,7 +253,7 @@ const UserTable = () => {
             </Modal>
             <Modal open={editModalOpen} onClose={handleEditClose}>
                 <div className='modal-child'>
-                    <h2>Edit User</h2>
+                    <h2 style={{alignItems:'center',justifyContent:'center',display:'flex'}}>Edite o Usuário</h2>
                     <Formik
                         initialValues={{
                             name: currentUser?.name,
@@ -344,9 +344,9 @@ const UserTable = () => {
                                     />
                                     <ErrorMessage name="birth_date" />
                                 </div>
-                                <div>
+                                <div style={{alignItems:'center',justifyContent:'center',display:'flex'}}>
                                     <Button type="submit" variant="contained" color="primary" disabled={isSubmitting}>
-                                    Update
+                                    Atualize
                                     </Button>
                                 </div>
                             </Form>

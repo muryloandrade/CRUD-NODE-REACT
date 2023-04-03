@@ -95,7 +95,7 @@ const UserDesactive = () => {
             ) : (
                 
                 <div className='no-users'>
-                    <h1 style={{color:'white', display:'flex',font:'caption',fontSize:'1.5em'}}>Nenhum usuário excluído</h1>
+                    <h1 style={{color:'white', display:'flex',font:'caption',fontSize:'1.5em'}}>Não há usuários excluídos</h1>
                 </div>
             )}
 
