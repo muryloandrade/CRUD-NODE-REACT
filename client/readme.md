@@ -12,7 +12,7 @@ Antes de tudo, se deseja executar somente o front-end, siga os passo abaixo, se 
 cd client/
 ```
 
-é necessário instalar as dependências do projeto utilizando o gerenciador de pacotes npm. Na pasta raiz do projeto, execute o seguinte comando no terminal:
+É necessário instalar as dependências do projeto utilizando o gerenciador de pacotes npm. Na pasta raiz do projeto, execute o seguinte comando no terminal:
 
 ```
 npm install
