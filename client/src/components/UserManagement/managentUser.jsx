@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Button, TextField, Modal,TableContainer,Table,TableCell,TableHead,TableRow,TableBody } from '@material-ui/core'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
 import './userActive.scss'
-import InfoIcon from '@material-ui/icons/Info'
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney'
 import PhoneIcon from '@material-ui/icons/Phone'
 import DescriptionIcon from '@material-ui/icons/Description'
@@ -17,19 +15,13 @@ import {
     formatPhoneNumber,
     formatDocumentNumber,
     formatDateTable,
+    validationSchema,
 } from '../../utils/function-standards'
 
 
 
 
-const validationSchema = Yup.object().shape({
-    name: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-    email: Yup.string().email('Invalid email').required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-    document: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-    phone: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-    salary: Yup.number().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-    birth_date: Yup.date().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
-})
+
 
 const UserTable = () => {
     const [users, setUsers] = useState([])
@@ -103,6 +95,7 @@ const UserTable = () => {
 
     return (
         <div style={{width:'100%'}}>
+            {/* Modal de Criação Abaixo */}
             <Modal open={createModalOpen} onClose={handleCreateClose} aria-labelledby="parent-modal-title"
                 aria-describedby="parent-modal-description" className='modal'>
                 <div className='modal-child'>
@@ -207,6 +200,7 @@ const UserTable = () => {
                     </Formik>
                 </div>
             </Modal>
+            {/* Modal de edição Abaixo */}
             <Modal open={editModalOpen} onClose={handleEditClose}>
                 <div className='modal-child'>
                     <h2 style={{alignItems:'center',justifyContent:'center',display:'flex'}}>Edite o Usuário</h2>

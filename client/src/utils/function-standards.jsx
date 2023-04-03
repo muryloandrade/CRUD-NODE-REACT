@@ -1,3 +1,8 @@
+/* eslint-disable react/react-in-jsx-scope */
+import InfoIcon from '@material-ui/icons/Info'
+import * as Yup from 'yup'
+
+
 export function formatDate(date) {
     const year = date.slice(0, 4)
     const month = date.slice(4, 6)
@@ -48,3 +53,12 @@ export function formatDocumentNumber(documentNumber) {
     }
     return formatted
 }
+
+export const validationSchema = Yup.object().shape({
+    name: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    email: Yup.string().email('Invalid email').required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    document: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    phone: Yup.string().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    salary: Yup.number().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+    birth_date: Yup.date().required(<span style={{ color: 'red',alignItems:'center',display:'flex' }}><InfoIcon style={{marginBottom:'0.4%'}}/> Esse Campo é obrigatório!</span>),
+})
