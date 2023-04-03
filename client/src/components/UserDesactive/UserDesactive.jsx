@@ -5,6 +5,7 @@ import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHe
 import EmailIcon from '@material-ui/icons/Email'
 import DeleteIcon from '@material-ui/icons/Delete'
 import {UndoOutlined} from '@material-ui/icons'
+import DescriptionIcon from '@material-ui/icons/Description'
 import './UserDesactive.scss'
 const UserDesactive = () => {
     const [users, setUsers] = useState([])
@@ -48,6 +49,7 @@ const UserDesactive = () => {
                             <TableRow>
                                 <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
                                 <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
+                                <TableCell><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
                                 <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                             </TableRow>
                         </TableHead>
@@ -78,6 +80,7 @@ const UserDesactive = () => {
                                         <>
                                             <TableCell>{user.name}</TableCell>
                                             <TableCell>{user.email}</TableCell>
+                                            <TableCell>{user.document}</TableCell>
                                             <TableCell>
                                                 <Button onClick={() => handleUndo(user)} style={{backgroundColor:'#22305a',color:'white'}} variant="contained"><UndoOutlined/></Button>
                                                 <Button onClick={() => handleDeleteClick(user.id)} style={{backgroundColor:'#f4b704',color:'white'}} variant="contained"><DeleteIcon /></Button>
