@@ -252,7 +252,7 @@ const UserTable = () => {
                 </div>
             </Modal>
             <Modal open={editModalOpen} onClose={handleEditClose}>
-                <div>
+                <div className='modal-child'>
                     <h2>Edit User</h2>
                     <Formik
                         initialValues={{
@@ -266,10 +266,10 @@ const UserTable = () => {
                         validationSchema={validationSchema}
                         onSubmit={handleUpdate}
                     >
-                        {({ isSubmitting }) => (
+                        {({ isSubmitting,setFieldValue,values }) => (
                             <Form>
                                 <div>
-                                    <Field as={TextField} name="name" label="Name" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="name" label="Nome" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="name" />
                                 </div>
                                 <div>
@@ -277,19 +277,71 @@ const UserTable = () => {
                                     <ErrorMessage name="email" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="document" label="Document" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="document"
+                                        label="CPF"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        onChange={(event) => {
+                                            const formattedDocumentNumber = formatDocumentNumber(event.target.value)
+                                            if (formattedDocumentNumber !== event.target.value) {
+                                                event.target.value = formattedDocumentNumber
+                                            }
+                                            setFieldValue('document', formattedDocumentNumber)
+                                        }}
+                                    />
                                     <ErrorMessage name="document" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="phone" label="Phone" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="phone"
+                                        label="Telefone"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        onChange={(event) => {
+                                            const formattedPhoneNumber = formatPhoneNumber(event.target.value)
+                                            if (formattedPhoneNumber !== event.target.value) {
+                                                event.target.value = formattedPhoneNumber
+                                            }
+                                            setFieldValue('phone', formattedPhoneNumber)
+                                        }}
+                                    />
                                     <ErrorMessage name="phone" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="salary" label="Salary" variant="outlined" margin="normal" fullWidth />
+                                    <Field as={TextField} name="salary" label="Salário" variant="outlined" margin="normal" fullWidth />
                                     <ErrorMessage name="salary" />
                                 </div>
                                 <div>
-                                    <Field as={TextField} name="birth_date" label="Birth Date" variant="outlined" margin="normal" fullWidth />
+                                    <Field
+                                        as={TextField}
+                                        name="birth_date"
+                                        label="Data de Nascimento"
+                                        format="dd/MM/yyyy"
+                                        variant="outlined"
+                                        margin="normal"
+                                        fullWidth
+                                        type="date"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        InputProps={{
+                                            inputProps: {
+                                                max: new Date().toISOString().slice(0, 10),
+                                            },
+                                            value: formatDate(values.birth_date),
+                                            onChange: (event) => {
+                                                const newValue = event.target.value
+                                                    .replace(/[^0-9]/g, '')
+                                                    .slice(0, 8)
+                                                setFieldValue('birth_date', newValue)
+                                            },
+                                        }}
+                                    />
                                     <ErrorMessage name="birth_date" />
                                 </div>
                                 <div>
@@ -307,12 +359,12 @@ const UserTable = () => {
                     <TableContainer style={{width:'100%', backgroundColor:'white'}}>
                         <Table>
                             <TableHead>
-                                <TableRow >
+                                <TableRow>
                                     <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
                                     <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
                                     <TableCell><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
                                     <TableCell><PhoneIcon style={{color:'#f4b704'}}/></TableCell>
-                                    <TableCell> <AttachMoneyIcon style={{ color: 'green' }} /></TableCell>
+                                    <TableCell> <AttachMoneyIcon style={{ color: '#f4b704' }} /></TableCell>
                                     <TableCell><DateRangeIcon style={{color:'#f4b704'}}/></TableCell>
                                     <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                                 </TableRow>
@@ -327,10 +379,10 @@ const UserTable = () => {
                                         <TableCell>R${user.salary}</TableCell>
                                         <TableCell>{formatDateTable(user.birth_date)}</TableCell>
                                         <TableCell>                                                
-                                            <Button variant="contained" color="primary" onClick={() => handleEditClick(user)}>
+                                            <Button variant="contained" style={{backgroundColor:'#22305a',color:'white'}} onClick={() => handleEditClick(user)}>
                                                 <EditIcon />
                                             </Button>
-                                            <Button variant="contained" color="secondary" onClick={() => handleDelete(user.id)}>
+                                            <Button variant="contained" style={{backgroundColor:'#f4b704',color:'white'}} onClick={() => handleDelete(user.id)}>
                                                 <DeleteIcon />
                                             </Button>
                                         </TableCell>
@@ -339,7 +391,7 @@ const UserTable = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Button variant="contained" color="primary" onClick={handleCreateClick}>
+                    <Button variant="contained" style={{backgroundColor:'#22305a',color:'white',fontWeight:'700'}} onClick={handleCreateClick}>
                         Crie um usuário
                     </Button>
                 </div>
