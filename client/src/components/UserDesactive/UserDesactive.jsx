@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Formik, Form, Field } from 'formik'
 import { TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@material-ui/core'
+import EmailIcon from '@material-ui/icons/Email'
+import DeleteIcon from '@material-ui/icons/Delete'
+import {UndoOutlined} from '@material-ui/icons'
 import './UserDesactive.scss'
 const UserDesactive = () => {
     const [users, setUsers] = useState([])
@@ -43,16 +46,14 @@ const UserDesactive = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>ID</TableCell>
-                                <TableCell>Name</TableCell>
-                                <TableCell>Email</TableCell>
-                                <TableCell>Actions</TableCell>
+                                <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
+                                <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
+                                <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {users.map((user) => (
                                 <TableRow key={user.id}>
-                                    <TableCell>{user.id}</TableCell>
                                     {editingId === user.id ? (
                                         <TableCell>
                                             <Formik
@@ -78,8 +79,8 @@ const UserDesactive = () => {
                                             <TableCell>{user.name}</TableCell>
                                             <TableCell>{user.email}</TableCell>
                                             <TableCell>
-                                                <Button onClick={() => handleUndo(user)}>Desfazer</Button>
-                                                <Button onClick={() => handleDeleteClick(user.id)}>Delete</Button>
+                                                <Button onClick={() => handleUndo(user)} style={{backgroundColor:'#22305a',color:'white'}} variant="contained"><UndoOutlined/></Button>
+                                                <Button onClick={() => handleDeleteClick(user.id)} style={{backgroundColor:'#f4b704',color:'white'}} variant="contained"><DeleteIcon /></Button>
                                             </TableCell>
                                         </>
                                     )}
