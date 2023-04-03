@@ -33,6 +33,12 @@ Rode o DataBase:
 npm run db
 ```
 
+Abra outro terminal
+```
+CTRL + SHIFT + T
+```
+
+
 Volte para a pasta raiz do projeto:
 ```
 cd ../
