@@ -105,12 +105,12 @@ const UserTable = () => {
     function formatDocumentNumber(documentNumber) {
         const cleaned = documentNumber.replace(/\D/g, '')
         let formatted = ''
-        for (let i = 0; i < cleaned.length && i < 10; i++) {
+        for (let i = 0; i < cleaned.length && i < 11; i++) {
             if (i === 0) {
                 formatted += cleaned[i]
             } else if (i === 3 || i === 6) {
                 formatted += `.${cleaned[i]}`
-            } else if (i === 8) {
+            } else if (i === 9) {
                 formatted += `-${cleaned[i]}`
             } else {
                 formatted += cleaned[i]
@@ -322,7 +322,7 @@ const UserTable = () => {
                                     <TableRow key={user.id}>
                                         <TableCell>{user.name}</TableCell>
                                         <TableCell>{user.email}</TableCell>
-                                        <TableCell>{user.document}</TableCell>
+                                        <TableCell>{formatDocumentNumber(user.document)}</TableCell>
                                         <TableCell>{formatPhoneNumber(user.phone)}</TableCell>
                                         <TableCell>R${user.salary}</TableCell>
                                         <TableCell>{formatDateTable(user.birth_date)}</TableCell>
