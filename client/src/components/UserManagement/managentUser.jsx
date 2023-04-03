@@ -391,7 +391,7 @@ const UserTable = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Button variant="contained" style={{backgroundColor:'#22305a',color:'white',fontWeight:'700'}} onClick={handleCreateClick}>
+                    <Button variant="contained" className='new-user-table' style={{backgroundColor:'#22305a',color:'white',fontWeight:'700'}} onClick={handleCreateClick}>
                         Crie um usuário
                     </Button>
                 </div>
