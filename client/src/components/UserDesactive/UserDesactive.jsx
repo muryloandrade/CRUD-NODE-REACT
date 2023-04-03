@@ -47,10 +47,10 @@ const UserDesactive = () => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
-                                <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
-                                <TableCell><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
-                                <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
+                                <TableCell align='center' style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
+                                <TableCell align='center'><EmailIcon style={{color:'#f4b704'}}/></TableCell>
+                                <TableCell align='center'><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
+                                <TableCell align='center' style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -78,10 +78,10 @@ const UserDesactive = () => {
                                         </TableCell>
                                     ) : (
                                         <>
-                                            <TableCell>{user.name}</TableCell>
-                                            <TableCell>{user.email}</TableCell>
-                                            <TableCell>{user.document}</TableCell>
-                                            <TableCell>
+                                            <TableCell align='center'>{user.name}</TableCell>
+                                            <TableCell align='center'>{user.email}</TableCell>
+                                            <TableCell align='center'>{user.document}</TableCell>
+                                            <TableCell align='center'>
                                                 <Button onClick={() => handleUndo(user)} style={{backgroundColor:'#22305a',color:'white'}} variant="contained"><UndoOutlined/></Button>
                                                 <Button onClick={() => handleDeleteClick(user.id)} style={{backgroundColor:'#f4b704',color:'white'}} variant="contained"><DeleteIcon /></Button>
                                             </TableCell>
