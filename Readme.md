@@ -38,12 +38,6 @@ Abra outro terminal
 CTRL + SHIFT + T
 ```
 
-
-Volte para a pasta raiz do projeto:
-```
-cd ../
-```
-
 Rode o Projeto:
 ```
 npm start
