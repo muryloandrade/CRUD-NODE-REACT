@@ -19,6 +19,25 @@ Instale as Dependências:
 npm install
 ```
 
+Entre na pasta api:
+```
+cd api/
+```
+Instale as Dependências:
+```
+npm install
+```
+
+Rode o DataBase:
+```
+npm run db
+```
+
+Volte para a pasta raiz do projeto:
+```
+cd ../
+```
+
 Rode o Projeto:
 ```
 npm start
