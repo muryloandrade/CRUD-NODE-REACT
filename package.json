@@ -1,0 +1,25 @@
+{
+  "name": "seven-inc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run api\" \"npm run client\"",
+    "api": "cd api && npm start",
+    "client": "cd client && npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muryloandrade/Seven-INC.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muryloandrade/Seven-INC/issues"
+  },
+  "homepage": "https://github.com/muryloandrade/Seven-INC#readme",
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}
