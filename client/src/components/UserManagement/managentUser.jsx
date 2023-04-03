@@ -360,25 +360,25 @@ const UserTable = () => {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
-                                    <TableCell><EmailIcon style={{color:'#f4b704'}}/></TableCell>
-                                    <TableCell><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
-                                    <TableCell><PhoneIcon style={{color:'#f4b704'}}/></TableCell>
-                                    <TableCell> <AttachMoneyIcon style={{ color: '#f4b704' }} /></TableCell>
-                                    <TableCell><DateRangeIcon style={{color:'#f4b704'}}/></TableCell>
-                                    <TableCell style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
+                                    <TableCell align='center' style={{color:'#f4b704', fontWeight:'700'}}>Nome</TableCell>
+                                    <TableCell align='center'><EmailIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell align='center'><DescriptionIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell align='center'><PhoneIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell align='center'> <AttachMoneyIcon style={{ color: '#f4b704' }} /></TableCell>
+                                    <TableCell align='center'><DateRangeIcon style={{color:'#f4b704'}}/></TableCell>
+                                    <TableCell align='center' style={{color:'#f4b704',fontWeight:'700'}}>Ações</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
                                 {users.map((user) => (
                                     <TableRow key={user.id}>
-                                        <TableCell>{user.name}</TableCell>
-                                        <TableCell>{user.email}</TableCell>
-                                        <TableCell>{formatDocumentNumber(user.document)}</TableCell>
-                                        <TableCell>{formatPhoneNumber(user.phone)}</TableCell>
-                                        <TableCell>R${user.salary}</TableCell>
-                                        <TableCell>{formatDateTable(user.birth_date)}</TableCell>
-                                        <TableCell>                                                
+                                        <TableCell align='center'>{user.name}</TableCell>
+                                        <TableCell align='center'>{user.email}</TableCell>
+                                        <TableCell align='center'>{formatDocumentNumber(user.document)}</TableCell>
+                                        <TableCell align='center'>{formatPhoneNumber(user.phone)}</TableCell>
+                                        <TableCell align='center'>R${user.salary}</TableCell>
+                                        <TableCell align='center'>{formatDateTable(user.birth_date)}</TableCell>
+                                        <TableCell align='center'>                                                
                                             <Button variant="contained" style={{backgroundColor:'#22305a',color:'white'}} onClick={() => handleEditClick(user)}>
                                                 <EditIcon />
                                             </Button>
