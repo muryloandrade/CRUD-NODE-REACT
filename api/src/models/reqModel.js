@@ -22,7 +22,7 @@ const deleteLogic = async (id) => {
 
 const deleteCertainty = async (id) => {
   const response = await axios.delete(`http://localhost:2899/usersDesactive/${id}`);
-  return response.data;
+  return response;
 };
 
 const getAllDesactive = async () => {

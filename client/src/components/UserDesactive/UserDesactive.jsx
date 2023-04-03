@@ -12,32 +12,33 @@ const UserDesactive = () => {
     const [editingId, setEditingId] = useState(null)
 
     useEffect(() => {
-        axios.get('http://localhost:2899/usersDesactive')
-            .then((response) => {
-                setUsers(response.data)
-            })
+        const fetchUsers = async () => {
+            const response = await axios.get('http://localhost:5173/employeeDesactive')
+            setUsers(response.data)
+        }
+        fetchUsers()
     }, [])
     
     
-    const handleUndo = (values) => {
-        console.log(values)
-        axios.post('http://localhost:5173/employee', values)
-            .then(response => {
-                setUsers(users.filter((u) => u.id !== response.id))
-                handleDeleteClick(values.id)
-            })
-            .catch(error => console.error(error))
-    } 
-
-    
     const handleDeleteClick = (id) => {
-        axios.delete(`http://localhost:2899/usersDesactive?id=${id}`)
+        axios.delete(`http://localhost:5173/employeeDesactive/${id}`)
             .then(() => {
                 setUsers(users.filter((u) => u.id !== id))
             }
             )
             .catch(error => console.error(error))       
     }
+    
+    const handleUndo = (values) => {
+        console.log(values)
+        axios.post('http://localhost:5173/employee', values)
+            .then(() => {
+                setUsers(users.filter((u) => u.id !== values.id))
+            })
+            .catch(error => console.error(error))
+        handleDeleteClick(values.id)
+    }
+    
     
 
     return (
